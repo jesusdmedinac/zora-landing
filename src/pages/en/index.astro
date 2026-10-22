@@ -1,0 +1,109 @@
+---
+import '../../styles/global.css';
+import AmbientShaderCanvas from '../../components/AmbientShaderCanvas.astro';
+import TopNav from '../../components/TopNav.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import TwoAgentArchitecture from '../../components/TwoAgentArchitecture.astro';
+import CopilotPhoneMockup from '../../components/CopilotPhoneMockup.astro';
+import InverseBiddingWorkflow from '../../components/InverseBiddingWorkflow.astro';
+import YonkeRadarSection from '../../components/YonkeRadarSection.astro';
+import CrossBorderSection from '../../components/CrossBorderSection.astro';
+import TrustAndVerification from '../../components/TrustAndVerification.astro';
+import FooterSection from '../../components/FooterSection.astro';
+import { translations } from '../../i18n/translations';
+
+const lang = 'en';
+const t = translations[lang];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Zora | Automotive AI Copilot & Real-Time Salvage Yard Network</title>
+    <meta
+      name="description"
+      content="Find guaranteed recycled auto parts without driving around town. AI diagnostic copilot and real-time reverse bidding with certified salvage yards across Tijuana and San Diego."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Zora | Automotive AI Copilot & Salvage Yard Network" />
+    <meta
+      property="og:description"
+      content="Real-time reverse bidding and AI part diagnosis connecting drivers with certified auto recyclers in the Tijuana - San Diego corridor."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zora.jesusdmedinac.com/en/" />
+    <meta property="og:image" content="https://zora.jesusdmedinac.com/images/zora-dark.png" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://zora.jesusdmedinac.com/en/#app",
+            "name": "Zora Automotive Marketplace & AI Copilot",
+            "url": "https://zora.jesusdmedinac.com/en/",
+            "applicationCategory": "AutomotiveApplication",
+            "operatingSystem": "Android, iOS, Web",
+            "description": "AI-powered automotive marketplace connecting drivers with certified salvage yards across the US-Mexico border corridor via reverse bidding."
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://zora.jesusdmedinac.com/#organization",
+            "name": "Zora",
+            "url": "https://zora.jesusdmedinac.com",
+            "logo": "https://zora.jesusdmedinac.com/images/zora-transparent.svg",
+            "founder": {
+              "@type": "Person",
+              "name": "Jesús Daniel Medina Cruz",
+              "url": "https://jesusdmedinac.com"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <!-- WebGL Ambient Glow Background -->
+    <AmbientShaderCanvas />
+
+    <!-- Top Navigation -->
+    <TopNav t={t} lang={lang} />
+
+    <!-- Main Content Container -->
+    <main class="page-container">
+      <HeroSection t={t} />
+      <TwoAgentArchitecture t={t} />
+      <CopilotPhoneMockup t={t} />
+      <InverseBiddingWorkflow t={t} />
+      <YonkeRadarSection t={t} />
+      <CrossBorderSection t={t} />
+      <TrustAndVerification t={t} />
+    </main>
+
+    <!-- Footer & CTA -->
+    <FooterSection t={t} />
+
+    <!-- Client-Side Language Switch Navigation -->
+    <script>
+      const langBtn = document.getElementById('lang-toggle-btn');
+      if (langBtn) {
+        langBtn.addEventListener('click', () => {
+          const current = langBtn.getAttribute('data-lang');
+          if (current === 'es') {
+            window.location.href = '/en/';
+          } else {
+            window.location.href = '/';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

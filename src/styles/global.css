@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zora-violet: #8A4DFF;
+  --color-zora-orchid: #A732FD;
+  --color-zora-magenta: #CD00EC;
+  --color-zora-fuchsia: #E200C1;
+  --color-zora-raspberry: #ED158A;
+
+  --color-metal-void: #090a0d;
+  --color-metal-gunmetal: #0f1115;
+  --color-metal-titanium: #16181d;
+  --color-metal-steel-mid: #1d2127;
+  --color-metal-steel-bright: #282e37;
+
+  --color-radar-emerald: #10B981;
+  --color-radar-amber: #F59E0B;
+
+  --color-text-laser-white: #f3f5f8;
+  --color-text-metal-secondary: #9aa4b2;
+  --color-text-engraved: #667282;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Geist", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Custom Design System Tokens */
+:root {
+  --metal-void: #090a0d;
+  --metal-gunmetal: #0f1115;
+  --metal-titanium: #16181d;
+  --metal-steel-mid: #1d2127;
+  --metal-steel-bright: #282e37;
+
+  --chamfer-light: rgba(255, 255, 255, 0.16);
+  --chamfer-subtle: rgba(255, 255, 255, 0.08);
+  --chamfer-dark: rgba(0, 0, 0, 0.6);
+
+  --zora-violet: #8A4DFF;
+  --zora-orchid: #A732FD;
+  --zora-magenta: #CD00EC;
+  --zora-fuchsia: #E200C1;
+  --zora-raspberry: #ED158A;
+
+  --zora-gradient: linear-gradient(135deg, #8A4DFF 0%, #A732FD 25%, #CD00EC 50%, #E200C1 75%, #ED158A 100%);
+  --zora-gradient-subtle: linear-gradient(135deg, rgba(138, 77, 255, 0.12) 0%, rgba(237, 21, 138, 0.12) 100%);
+  --zora-glow: rgba(167, 50, 253, 0.35);
+
+  --radar-emerald: #10B981;
+  --radar-amber: #F59E0B;
+
+  --text-laser-white: #f3f5f8;
+  --text-metal-secondary: #9aa4b2;
+  --text-engraved: #667282;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Geist", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Base Setup */
+html, body {
+  background-color: var(--metal-void);
+  color: var(--text-laser-white);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Subtle Titanium Dot Matrix Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Container */
+.page-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 640px) {
+  .page-container {
+    padding: 0 16px;
+  }
+}
+
+/* Machined Titanium Cards */
+.titanium-card {
+  background: linear-gradient(180deg, var(--metal-titanium) 0%, var(--metal-gunmetal) 100%);
+  border: 1px solid var(--chamfer-subtle);
+  border-top: 1px solid var(--chamfer-light);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.titanium-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  border-top-color: rgba(167, 50, 253, 0.5);
+  box-shadow: 0 16px 40px -10px rgba(138, 77, 255, 0.15);
+}
+
+/* Laser-White Headlines with Zero Text Gradient */
+h1, h2, h3, h4 {
+  color: var(--text-laser-white);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+/* Semantic Badges */
+.badge-metal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--chamfer-subtle);
+  background: rgba(22, 24, 29, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--text-metal-secondary);
+}
+
+.badge-spectrum {
+  border-color: rgba(167, 50, 253, 0.35);
+  background: rgba(138, 77, 255, 0.1);
+  color: #c49eff;
+}
+
+.badge-radar {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+}
+
+/* LED Diode Pulse */
+.led-diode {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.led-emerald {
+  background: var(--radar-emerald);
+  box-shadow: 0 0 8px var(--radar-emerald);
+  animation: diode-pulse 2s infinite ease-in-out;
+}
+
+.led-violet {
+  background: var(--zora-magenta);
+  box-shadow: 0 0 8px var(--zora-magenta);
+  animation: diode-pulse 2s infinite ease-in-out;
+}
+
+@keyframes diode-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Interactive Buttons */
+.btn-primary {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #ffffff;
+  background: var(--zora-gradient);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px -2px var(--zora-glow);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 8px 28px -2px rgba(167, 50, 253, 0.5);
+}
+
+.btn-secondary {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text-laser-white);
+  background: rgba(22, 24, 29, 0.7);
+  border: 1px solid var(--chamfer-subtle);
+  border-top: 1px solid var(--chamfer-light);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(30, 34, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,416 @@
+---
+import type { TranslationDictionary } from '../i18n/translations';
+
+interface Props {
+  t: TranslationDictionary;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="hero-section" id="buscar">
+  <!-- Semantic Badges Row -->
+  <div class="badge-row">
+    <span class="badge-metal badge-spectrum">
+      <span class="led-diode led-violet"></span>
+      {t.hero.badgeAi}
+    </span>
+    <span class="badge-metal badge-radar">
+      <span class="led-diode led-emerald"></span>
+      {t.hero.badgeNetwork}
+    </span>
+    <span class="badge-metal">
+      {t.hero.badgeAuction}
+    </span>
+  </div>
+
+  <!-- Laser-White Headline -->
+  <h1 class="hero-title">
+    {t.hero.headline}<br />
+    <span class="hero-highlight">{t.hero.headlineHighlight}</span>
+  </h1>
+
+  <!-- Subtitle -->
+  <p class="hero-subtitle">
+    {t.hero.subtitle}
+  </p>
+
+  <!-- Interactive Search / Prompt Simulator -->
+  <div class="search-box-container titanium-card">
+    <form id="hero-search-form" class="search-input-wrapper">
+      <div class="search-icon-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+      <input
+        type="text"
+        id="hero-search-input"
+        class="search-input"
+        placeholder={t.hero.searchPlaceholder}
+        autocomplete="off"
+      />
+      <button type="submit" class="btn-primary search-submit-btn">
+        <span>{t.hero.searchBtn}</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </form>
+
+    <!-- Interactive Chips -->
+    <div class="search-chips-row">
+      <span class="chips-label">{t.hero.searchChipsLabel}</span>
+      <div class="chips-list">
+        {t.hero.chips.map((chipText) => (
+          <button type="button" class="search-chip" data-query={chipText}>
+            {chipText}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Live Simulation Alert (Hidden until search clicked) -->
+    <div id="search-sim-result" class="search-sim-box" style="display: none;">
+      <div class="sim-header">
+        <div class="sim-status">
+          <span class="led-diode led-emerald"></span>
+          <span class="sim-status-text">RADAR ZORA ACTIVADO (34 YONKES EN ZONA TIJUANA/SD)</span>
+        </div>
+        <span class="sim-latency">Latencia: 42ms</span>
+      </div>
+      <div class="sim-content">
+        <p id="sim-query-text" class="sim-query"></p>
+        <div class="sim-feed">
+          <div class="sim-pill">
+            <span class="sim-tag">DIAGNÓSTICO OEM</span>
+            <span id="sim-diag-text" class="sim-body"></span>
+          </div>
+          <div class="sim-pill sim-pill-match">
+            <span class="sim-tag sim-tag-emerald">DONANTES FÍSICOS DETECTADOS</span>
+            <span class="sim-body">3 Yonkes con vehículos en patio listos para desmontar.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-Authority Metrics Strip -->
+  <div class="metrics-strip titanium-card">
+    {t.hero.metrics.map((metric, idx) => (
+      <div class="metric-item">
+        <span class="metric-value">{metric.value}</span>
+        <span class="metric-label">{metric.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding: 64px 0 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    color: var(--text-laser-white);
+    max-width: 980px;
+    margin-bottom: 24px;
+  }
+
+  .hero-highlight {
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(167, 50, 253, 0.25);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+    line-height: 1.6;
+    color: var(--text-metal-secondary);
+    max-width: 780px;
+    margin-bottom: 36px;
+  }
+
+  /* Search Box Container */
+  .search-box-container {
+    width: 100%;
+    max-width: 860px;
+    padding: 16px;
+    margin-bottom: 48px;
+    text-align: left;
+  }
+
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 17, 21, 0.95);
+    border: 1px solid var(--chamfer-subtle);
+    border-radius: 12px;
+    padding: 8px 12px 8px 16px;
+  }
+
+  .search-icon-box {
+    color: var(--zora-magenta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-laser-white);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+  }
+
+  .search-input::placeholder {
+    color: var(--text-engraved);
+  }
+
+  .search-submit-btn {
+    flex-shrink: 0;
+    padding: 0 20px;
+    min-height: 44px;
+  }
+
+  .search-chips-row {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 0 6px;
+  }
+
+  .chips-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-engraved);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .chips-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .search-chip {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-metal-secondary);
+    font-size: 0.78rem;
+    font-family: var(--font-sans);
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .search-chip:hover {
+    background: rgba(138, 77, 255, 0.12);
+    border-color: rgba(138, 77, 255, 0.35);
+    color: var(--text-laser-white);
+    transform: translateY(-1px);
+  }
+
+  /* Simulation Result Box */
+  .search-sim-box {
+    margin-top: 16px;
+    background: rgba(9, 10, 13, 0.95);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 10px;
+    padding: 14px 16px;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .sim-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  .sim-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sim-status-text {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #34d399;
+    letter-spacing: 0.05em;
+  }
+
+  .sim-latency {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-engraved);
+  }
+
+  .sim-query {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-laser-white);
+    margin-bottom: 8px;
+  }
+
+  .sim-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sim-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--text-metal-secondary);
+  }
+
+  .sim-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-laser-white);
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .sim-tag-emerald {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  /* Metrics Strip */
+  .metrics-strip {
+    width: 100%;
+    max-width: 980px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 24px 20px;
+  }
+
+  .metric-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .metric-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: var(--chamfer-subtle);
+  }
+
+  .metric-value {
+    font-size: 1.55rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--text-laser-white);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .metric-label {
+    font-size: 0.78rem;
+    color: var(--text-metal-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .metrics-strip {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 20px;
+    }
+    .metric-item:nth-child(2)::after {
+      display: none;
+    }
+    .search-input-wrapper {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 12px;
+    }
+    .search-submit-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const chips = document.querySelectorAll('.search-chip');
+  const input = document.getElementById('hero-search-input') as HTMLInputElement | null;
+  const form = document.getElementById('hero-search-form') as HTMLFormElement | null;
+  const simResult = document.getElementById('search-sim-result');
+  const simQueryText = document.getElementById('sim-query-text');
+  const simDiagText = document.getElementById('sim-diag-text');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const query = chip.getAttribute('data-query');
+      if (input && query) {
+        input.value = query;
+        input.focus();
+        runSimulation(query);
+      }
+    });
+  });
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (input && input.value.trim().length > 0) {
+        runSimulation(input.value.trim());
+      }
+    });
+  }
+
+  function runSimulation(query: string) {
+    if (simResult && simQueryText && simDiagText) {
+      simResult.style.display = 'block';
+      simQueryText.textContent = `Búsqueda: "${query}"`;
+      simDiagText.textContent = `Número de parte OEM y equivalencias calculadas con éxito para tu modelo.`;
+    }
+  }
+</script>

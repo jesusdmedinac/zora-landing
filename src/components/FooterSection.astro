@@ -1,0 +1,183 @@
+---
+import type { TranslationDictionary } from '../i18n/translations';
+
+interface Props {
+  t: TranslationDictionary;
+}
+
+const { t } = Astro.props;
+---
+
+<footer class="footer-wrapper">
+  <!-- Conversion CTA Box -->
+  <div class="cta-banner-container">
+    <div class="cta-banner titanium-card">
+      <div class="cta-glow"></div>
+      <h2 class="cta-title">{t.cta.title}</h2>
+      <p class="cta-subtitle">{t.cta.subtitle}</p>
+      <div class="cta-buttons">
+        <a href="#buscar" class="btn-primary cta-btn">
+          <span>{t.cta.driverAction}</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="https://wa.me/14704061747?text=Hola%20Zora%2C%20tengo%20un%20yonke%20y%20quiero%20afiliarme" target="_blank" rel="noopener noreferrer" class="btn-secondary cta-btn">
+          <span>{t.cta.yardAction}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Details & Navigation -->
+  <div class="footer-bottom">
+    <div class="footer-brand-row">
+      <div class="footer-brand">
+        <img src="/images/zora-transparent.svg" alt="Zora Logo" width="24" height="24" class="footer-logo" />
+        <span class="footer-brand-name">ZORA</span>
+      </div>
+      <p class="footer-tagline">{t.footer.tagline}</p>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-links-row">
+      <div class="footer-legal">
+        <p class="footer-disclaimer">{t.footer.disclaimer}</p>
+        <p class="footer-author">{t.footer.author}</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; {new Date().getFullYear()} Zora. {t.footer.rights}</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-wrapper {
+    padding: 72px 0 48px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .cta-banner-container {
+    max-width: 1080px;
+    margin: 0 auto 64px;
+  }
+
+  .cta-banner {
+    padding: 56px 40px;
+    text-align: center;
+    position: relative;
+    background: radial-gradient(circle at 50% 0%, rgba(138, 77, 255, 0.15) 0%, rgba(15, 17, 21, 0.95) 75%);
+    border: 1px solid rgba(167, 50, 253, 0.35);
+  }
+
+  .cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-metal-secondary);
+    max-width: 680px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cta-btn {
+    min-height: 48px;
+    padding: 0 28px;
+  }
+
+  /* Bottom Footer */
+  .footer-bottom {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .footer-brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-laser-white);
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--text-metal-secondary);
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: var(--chamfer-subtle);
+    margin-bottom: 24px;
+  }
+
+  .footer-links-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    font-size: 0.78rem;
+    color: var(--text-engraved);
+    flex-wrap: wrap;
+  }
+
+  .footer-legal {
+    max-width: 720px;
+  }
+
+  .footer-disclaimer {
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .footer-author {
+    color: var(--text-metal-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+  }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 640px) {
+    .cta-banner {
+      padding: 36px 20px;
+    }
+    .cta-buttons {
+      flex-direction: column;
+    }
+    .cta-btn {
+      width: 100%;
+    }
+  }
+</style>

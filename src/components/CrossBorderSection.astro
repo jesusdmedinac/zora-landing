@@ -1,0 +1,242 @@
+---
+import type { TranslationDictionary } from '../i18n/translations';
+
+interface Props {
+  t: TranslationDictionary;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="cross-border-section">
+  <!-- Header -->
+  <div class="section-header">
+    <span class="badge-metal badge-spectrum">
+      {t.crossBorder.badge}
+    </span>
+    <h2 class="section-title">
+      {t.crossBorder.title}
+    </h2>
+    <p class="section-subtitle">
+      {t.crossBorder.subtitle}
+    </p>
+  </div>
+
+  <!-- Corridor Visual Showcase & Highlights -->
+  <div class="corridor-grid">
+    <!-- Left: Binational Map & Radar Graphic -->
+    <div class="corridor-map-card titanium-card">
+      <div class="map-badge">
+        <span class="led-diode led-emerald"></span>
+        <span class="map-title">CORREDOR LOGÍSTICO BINACIONAL</span>
+      </div>
+
+      <div class="map-visual">
+        <div class="border-line-box">
+          <span class="country-label">CALIFORNIA / SAN DIEGO</span>
+          <div class="border-divider">
+            <span class="border-text">FRONTERA INTERNACIONAL</span>
+          </div>
+          <span class="country-label country-label-mx">BAJA CALIFORNIA / TIJUANA</span>
+        </div>
+
+        <div class="corridor-nodes">
+          <div class="corridor-node node-sd">
+            <span class="node-dot"></span>
+            <span class="node-name">Chula Vista / Otay Mesa</span>
+          </div>
+          <div class="corridor-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </div>
+          <div class="corridor-node node-tj">
+            <span class="node-dot node-dot-purple"></span>
+            <span class="node-name">Mesa de Otay / El Florido</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-footer">
+        <span class="footer-stat">Tiempo de Cruce &amp; Entrega: Menos de 4 horas en zona fronteriza</span>
+      </div>
+    </div>
+
+    <!-- Right: Feature Cards -->
+    <div class="corridor-features">
+      {t.crossBorder.highlights.map((item) => (
+        <div class="feature-card titanium-card">
+          <h3 class="feature-title">{item.title}</h3>
+          <p class="feature-desc">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cross-border-section {
+    padding: 72px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 48px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+    margin: 16px 0 12px;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-metal-secondary);
+    line-height: 1.6;
+  }
+
+  .corridor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .corridor-map-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: radial-gradient(circle at 50% 20%, rgba(138, 77, 255, 0.08) 0%, rgba(9, 10, 13, 0.95) 70%);
+  }
+
+  .map-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #34d399;
+  }
+
+  .map-visual {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .border-line-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .country-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-metal-secondary);
+    letter-spacing: 0.06em;
+  }
+
+  .country-label-mx {
+    color: #c49eff;
+  }
+
+  .border-divider {
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0.3) 6px, transparent 6px, transparent 12px);
+    position: relative;
+    margin: 6px 0;
+  }
+
+  .border-text {
+    position: absolute;
+    right: 0;
+    top: -10px;
+    background: var(--metal-void);
+    padding: 0 6px;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--text-engraved);
+  }
+
+  .corridor-nodes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 17, 21, 0.8);
+    border: 1px solid var(--chamfer-subtle);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .corridor-node {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .node-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--radar-emerald);
+    box-shadow: 0 0 10px var(--radar-emerald);
+  }
+
+  .node-dot-purple {
+    background: var(--zora-magenta);
+    box-shadow: 0 0 10px var(--zora-magenta);
+  }
+
+  .node-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-laser-white);
+  }
+
+  .corridor-arrow {
+    color: var(--text-engraved);
+  }
+
+  .map-footer {
+    border-top: 1px solid var(--chamfer-subtle);
+    padding-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-metal-secondary);
+  }
+
+  .corridor-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 24px;
+  }
+
+  .feature-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-laser-white);
+    margin-bottom: 8px;
+  }
+
+  .feature-desc {
+    font-size: 0.88rem;
+    color: var(--text-metal-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) {
+    .corridor-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

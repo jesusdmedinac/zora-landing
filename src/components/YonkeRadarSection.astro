@@ -1,0 +1,193 @@
+---
+import type { TranslationDictionary } from '../i18n/translations';
+
+interface Props {
+  t: TranslationDictionary;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="yonkes-section" id="para-yonkes">
+  <!-- Header -->
+  <div class="section-header">
+    <span class="badge-metal badge-radar">
+      <span class="led-diode led-emerald"></span>
+      {t.yonkes.badge}
+    </span>
+    <h2 class="section-title">
+      {t.yonkes.title}
+    </h2>
+    <p class="section-subtitle">
+      {t.yonkes.subtitle}
+    </p>
+  </div>
+
+  <!-- B2B Value Cards Bento -->
+  <div class="yonkes-bento">
+    {t.yonkes.cards.map((card) => (
+      <div class="yonke-card titanium-card">
+        <div class="yonke-card-glow"></div>
+        <div class="yonke-card-inner">
+          <div class="card-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="yard-icon">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3 class="card-title">{card.title}</h3>
+          <p class="card-desc">{card.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Yard Stats & CTA Banner -->
+  <div class="yard-action-banner titanium-card">
+    <div class="banner-metrics">
+      {t.yonkes.metrics.map((m) => (
+        <div class="b-metric">
+          <span class="b-val">{m.val}</span>
+          <span class="b-lbl">{m.lbl}</span>
+        </div>
+      ))}
+    </div>
+    <div class="banner-cta">
+      <a href="https://wa.me/14704061747?text=Hola%20Zora%2C%20quiero%20registrar%20mi%20yonke%20en%20la%20red%20de%20radar" target="_blank" rel="noopener noreferrer" class="btn-primary btn-yard-cta">
+        <span>{t.yonkes.ctaYardRegister}</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .yonkes-section {
+    padding: 72px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 840px;
+    margin: 0 auto 48px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+    margin: 16px 0 12px;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-metal-secondary);
+    line-height: 1.6;
+  }
+
+  .yonkes-bento {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .yonke-card {
+    padding: 32px 28px;
+    position: relative;
+  }
+
+  .yard-icon {
+    color: var(--radar-emerald);
+  }
+
+  .card-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--text-laser-white);
+    margin-bottom: 8px;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--text-metal-secondary);
+    line-height: 1.6;
+  }
+
+  /* Action Banner */
+  .yard-action-banner {
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: linear-gradient(135deg, rgba(22, 24, 29, 0.95) 0%, rgba(15, 17, 21, 0.95) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .banner-metrics {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .b-metric {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .b-val {
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #34d399;
+    line-height: 1.1;
+  }
+
+  .b-lbl {
+    font-size: 0.76rem;
+    color: var(--text-metal-secondary);
+  }
+
+  .btn-yard-cta {
+    background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+    box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-yard-cta:hover {
+    box-shadow: 0 8px 28px -2px rgba(16, 185, 129, 0.6);
+  }
+
+  @media (max-width: 860px) {
+    .yonkes-bento {
+      grid-template-columns: 1fr;
+    }
+    .yard-action-banner {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+    .banner-metrics {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .btn-yard-cta {
+      width: 100%;
+    }
+  }
+</style>
