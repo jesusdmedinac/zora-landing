@@ -52,168 +52,16 @@ const { t } = Astro.props;
 
     <!-- Phone Chassis Frame -->
     <div class="phone-frame">
-      <!-- Dynamic Island / Speaker Notch -->
-      <div class="phone-top-bar">
-        <div class="phone-time">9:41</div>
-        <div class="dynamic-island">
-          <span class="island-dot"></span>
-          <span class="island-brand">ZORA RADAR</span>
-        </div>
-        <div class="phone-icons">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4a1 1 0 0 0 1.41 1.41l1.79-.62C9.13 21.26 10.53 22 12 22c4.97 0 9-4.03 9-9s-4.03-9-9-9z"></path>
-          </svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17 4h-3V2h-4v2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
-          </svg>
-        </div>
-      </div>
-
       <!-- Phone Screen Viewport -->
       <div class="phone-viewport">
         <!-- View 1: Copilot Chat -->
-        <div id="view-copilot" class="phone-view active">
-          <!-- Chat Top Nav -->
-          <div class="app-header">
-            <div class="app-profile">
-              <div class="app-avatar-box">
-                <img src="/images/zora-transparent.svg" alt="Zora" width="18" height="18" />
-              </div>
-              <div class="app-title-group">
-                <span class="app-title">Zora Copilot</span>
-                <span class="app-status">
-                  <span class="led-diode led-emerald"></span> En línea &bull; Modelo Gemini
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Messages Stream -->
-          <div class="chat-messages">
-            <!-- User Bubble -->
-            <div class="msg-bubble user-msg">
-              <p>{t.phoneMockup.copilotTab.driverQuery}</p>
-              <span class="msg-time">09:38</span>
-            </div>
-
-            <!-- Assistant Bubble with Generative Diagnostic Card -->
-            <div class="msg-bubble assistant-msg">
-              <div class="assistant-content">
-                <p>{t.phoneMockup.copilotTab.aiResponse}</p>
-
-                <!-- Embedded Generative Card -->
-                <div class="gen-diagnostic-card">
-                  <div class="gen-badge-row">
-                    <span class="gen-badge-highlight">{t.phoneMockup.copilotTab.diagBadge}</span>
-                    <span class="gen-badge-fit">DIRECT FIT</span>
-                  </div>
-                  <p class="gen-part-code">{t.phoneMockup.copilotTab.partCode}</p>
-                  <div class="gen-action-strip">
-                    <button class="btn-primary gen-btn">Alertar a Yonkes</button>
-                    <span class="gen-tag">Compatibilidad 100%</span>
-                  </div>
-                </div>
-              </div>
-              <span class="msg-time">09:39</span>
-            </div>
-          </div>
-        </div>
+        <img id="view-copilot" class="phone-view active" src="/images/zora-ss/zora-ss-03-Onboarding-Chat-iPhone-18-Pro-Max.png"/>
 
         <!-- View 2: Virtual Garage -->
-        <div id="view-garage" class="phone-view">
-          <div class="app-header">
-            <span class="app-title">Garaje Virtual &amp; Bóveda</span>
-            <span class="badge-metal badge-spectrum">1/1 SLOTS</span>
-          </div>
-
-          <div class="garage-content">
-            <!-- Vehicle Card -->
-            <div class="vehicle-card titanium-card">
-              <div class="vehicle-card-top">
-                <div class="car-info">
-                  <span class="car-vin">VIN: 2HKRM4H58GH02****</span>
-                  <h4 class="car-name">{t.phoneMockup.garageTab.vehicle}</h4>
-                </div>
-                <div class="health-pill">
-                  <span class="health-val">94%</span>
-                  <span class="health-lbl">SALUD</span>
-                </div>
-              </div>
-              <div class="garage-divider"></div>
-              <div class="telemetry-box">
-                <span class="telemetry-badge">
-                  <span class="led-diode led-emerald"></span>
-                  {t.phoneMockup.garageTab.telemetryNotice}
-                </span>
-                <p class="telemetry-desc">{t.phoneMockup.garageTab.fluidsStatus}</p>
-                <div class="maintenance-pill">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                  </svg>
-                  <span>{t.phoneMockup.garageTab.nextCheck}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Memory Slots Storage -->
-            <div class="memory-vault-box">
-              <span class="vault-title">MEMORIA LOCAL (SQLDELIGHT)</span>
-              <div class="memory-item">
-                <span>Registro de Triage #810</span>
-                <span class="memory-tag">GUARDADO</span>
-              </div>
-              <div class="memory-item">
-                <span>Perfil de Aceite Motor 0W-20</span>
-                <span class="memory-tag">ACTIVO</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img id="view-garage" class="phone-view" src="/images/zora-ss/zora-ss-06-Garage-Virtual-iPhone-18-Pro-Max.png"/>
 
         <!-- View 3: Contextual Parts & Radar Feed -->
-        <div id="view-parts" class="phone-view">
-          <div class="app-header">
-            <span class="app-title">Radar de Piezas &amp; Ofertas</span>
-            <span class="badge-metal badge-radar">3 EN RADAR</span>
-          </div>
-
-          <div class="parts-feed">
-            <!-- Live Salvage Offer 1 -->
-            <div class="part-card titanium-card">
-              <div class="part-card-header">
-                <span class="part-status-badge">
-                  <span class="led-diode led-emerald"></span>
-                  {t.phoneMockup.partsTab.status}
-                </span>
-                <span class="part-savings">{t.phoneMockup.partsTab.savings}</span>
-              </div>
-              <h4 class="part-title">{t.phoneMockup.partsTab.partName}</h4>
-              <p class="part-yard">{t.phoneMockup.partsTab.yardName}</p>
-              <div class="part-price-row">
-                <span class="part-price">{t.phoneMockup.partsTab.price}</span>
-                <button class="btn-primary part-buy-btn">Ver Fotos &amp; Comprar</button>
-              </div>
-            </div>
-
-            <!-- Live Salvage Offer 2 -->
-            <div class="part-card titanium-card">
-              <div class="part-card-header">
-                <span class="part-status-badge">
-                  <span class="led-diode led-emerald"></span>
-                  OTAY RECYCLERS
-                </span>
-                <span class="part-savings">Ahorro: 62%</span>
-              </div>
-              <h4 class="part-title">Semieje Delantero Izquierdo con Junta</h4>
-              <p class="part-yard">Yonke El Águila - Tijuana / San Diego</p>
-              <div class="part-price-row">
-                <span class="part-price">$90 USD ($1,650 MXN)</span>
-                <button class="btn-secondary part-buy-btn">Revisar</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img id="view-parts" class="phone-view" src="/images/zora-ss/zora-ss-07-Yonke-Virtual-&-Refacciones-iPhone-18-Pro-Max.png"/>
       </div>
     </div>
   </div>
@@ -283,13 +131,6 @@ const { t } = Astro.props;
   .phone-frame {
     width: 100%;
     max-width: 410px;
-    height: 720px;
-    background: #090a0d;
-    border-radius: 46px;
-    border: 10px solid #1f232b;
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8),
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                0 0 35px -5px rgba(138, 77, 255, 0.2);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -308,36 +149,10 @@ const { t } = Astro.props;
     z-index: 10;
   }
 
-  .dynamic-island {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: #000000;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.05em;
-  }
-
-  .island-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--radar-emerald);
-  }
-
-  .phone-icons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
   .phone-viewport {
     flex: 1;
     overflow-y: auto;
     position: relative;
-    background: #0f1115;
   }
 
   .phone-view {
